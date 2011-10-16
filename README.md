@@ -4,8 +4,28 @@ MIT License (see LICENSE file)
 
 node-functions is a library for dealing with functions in JavaScript.
 
-## API
-Coming soon!
+## Usage
+
+```javascript
+var assert = require('assert'),
+    functions = require('functions');
+
+// `functions.returns`
+var get42 = functions.returns(42);
+// get42 always returns `42`
+assert.equal(get42(), 42);
+
+// `functions.throws`
+var throwMeAnError = functions.throws(new Error());
+// throwMeAnError will always throw an Error when called
+assert.throws(throwMeAnError, Error);
+
+// `functions.throwsIfError`
+var throwIfError = functions.throwsIfError();
+// throwIfError will always throw first parameter it gets if it's truthy
+assert.throws(function () { throwIfError(new Error()); });
+assert.doesNotThrow(function () { throwsIfError(0); });
+```
 
 ## Installation
 
