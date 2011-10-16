@@ -78,6 +78,21 @@ vows.describe('functions').addBatch({
         }
       }
     }
+  },
+  '`noop` function': {
+    topic: function () {
+      return functions.noop;
+    },
+    'should be a function': function (topic) {
+      assert.isFunction(topic);
+    },
+    'when called': {
+      'should never return anything': function (result) {
+        for (var i = 0; i < N; i++) {
+          assert.isUndefined(result());
+        }
+      }
+    }
   }
 }).export(module);
 
