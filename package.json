@@ -1,0 +1,21 @@
+{
+  "author": "Maciej Małecki <maciej.malecki@notimplemented.org>",
+  "name": "functions",
+  "description": "tools for dealing with functions in JavaScript",
+  "version": "0.0.0",
+  "main": "lib/functions.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mmalecki/node-functions.git"
+  },
+  "engines": {
+    "node": ">= 0.4"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vows": "*"
+  },
+  "scripts": {
+    "test": "vows --spec"
+  }
+}
