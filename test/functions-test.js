@@ -39,6 +39,45 @@ vows.describe('functions').addBatch({
         assert.throws(topic, OurError);
       }
     }
+  },
+  '`throwsIfError` function result': {
+    'without `exception` parameter': {
+      topic: function () {
+        return functions.throwsIfError();
+      },
+      'should be a function': function (topic) {
+        assert.isFunction(topic);
+      },
+      "should always throw first parameter if it's truthy": function (topic) {
+        for (var i = 0; i < N; i++) {
+          assert.throws(topic.bind(topic, new OurError('Expected error')),
+                        OurError);
+        }
+      },
+      'should never throw if first parameter is falsy': function (topic) {
+        for (var i = 0; i < N; i++) {
+          assert.doesNotThrow(topic.bind(topic, false));
+        }
+      }
+    },
+    'with `exception` parameter': {
+      topic: function () {
+        return functions.throwsIfError(new OurError('Expected error'));
+      },
+      'should be a function': function (topic) {
+        assert.isFunction(topic);
+      },
+      'should always throw provided error if first parameter is truthy': function (topic) {
+        for (var i = 0; i < N; i++) {
+          assert.throws(topic.bind(topic, true), OurError);
+        }
+      },
+      'should never throw if first parameter is falsy': function (topic) {
+        for (var i = 0; i < N; i++) {
+          assert.doesNotThrow(topic.bind(topic, false), Error);
+        }
+      }
+    }
   }
 }).export(module);
 
