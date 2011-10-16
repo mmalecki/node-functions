@@ -1,4 +1,4 @@
-# node-functions
+# node-functions [![Build Status](https://secure.travis-ci.org/mmalecki/node-functions.png)](http://travis-ci.org/mmalecki/node-functions)
 Copyright (C) 2011 by Maciej Małecki  
 MIT License (see LICENSE file)
 
