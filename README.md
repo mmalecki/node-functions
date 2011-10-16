@@ -25,6 +25,8 @@ var throwIfError = functions.throwsIfError();
 // throwIfError will always throw first parameter it gets if it's truthy
 assert.throws(function () { throwIfError(new Error()); });
 assert.doesNotThrow(function () { throwsIfError(0); });
+
+functions.noop(); // this call does nothing
 ```
 
 ## Installation
