@@ -93,6 +93,28 @@ vows.describe('functions').addBatch({
         }
       }
     }
+  },
+  '`eq` function': {
+    topic: function () {
+      return functions.eq;
+    },
+    'should be a function': function (topic) {
+      assert.isFunction(topic);
+    },
+    'when called': {
+      'with equal values': {
+        topic: functions.eq(42, 42),
+        'should return true': function (result) {
+          assert.isTrue(result);
+        }
+      },
+      'with equalish values': {
+        topic: functions.eq('42', 42),
+        'should return true': function (result) {
+          assert.isTrue(result);
+        }
+      }
+    }
   }
 }).export(module);
 
