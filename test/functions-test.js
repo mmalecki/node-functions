@@ -88,6 +88,26 @@ vows.describe('functions').addBatch({
       }
     }
   }),
+  '`neq` function': testFunction(functions.neq, {
+    'with equal values': {
+      topic: functions.neq(42, 42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
+    },
+    'with equalish values': {
+      topic: functions.neq('42', 42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
+    },
+    'with different values': {
+      topic: functions.neq(-42, 42),
+      'should return true': function (result) {
+        assert.isTrue(result);
+      }
+    }
+  }),
   '`strictEq` function': testFunction(functions.strictEq, {
     'with equal values': {
       topic: functions.strictEq(42, 42),
