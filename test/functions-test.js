@@ -134,6 +134,26 @@ vows.describe('functions').addBatch({
       }
     }
   }),
+  '`strictNeq` function': testFunction(functions.strictNeq, {
+    'with equal values': {
+      topic: functions.strictNeq(42, 42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
+    },
+    'with equalish values': {
+      topic: functions.strictNeq('42', 42),
+      'should return false': function (result) {
+        assert.isTrue(result);
+      }
+    },
+    'with different values': {
+      topic: functions.strictNeq(-42, 42),
+      'should return true': function (result) {
+        assert.isTrue(result);
+      }
+    }
+  }),
   '`gt` function': testFunction(functions.gt, {
     'with first argument greater than second': {
       topic: functions.gt(42, -42),
