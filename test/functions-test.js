@@ -86,6 +86,12 @@ vows.describe('functions').addBatch({
       'should return true': function (result) {
         assert.isTrue(result);
       }
+    },
+    'with different values': {
+      topic: functions.eq(-42, 42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
     }
   }),
   '`neq` function': testFunction(functions.neq, {
