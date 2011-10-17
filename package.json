@@ -2,7 +2,7 @@
   "author": "Maciej Małecki <maciej.malecki@notimplemented.org>",
   "name": "functions",
   "description": "tools for dealing with functions in JavaScript",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "lib/functions.js",
   "repository": {
     "type": "git",
