@@ -68,11 +68,9 @@ vows.describe('functions').addBatch({
     })
   },
   '`noop` function': testFunction(functions.noop, {
-    'when called': {
-      'should never return anything': function (result) {
-        for (var i = 0; i < N; i++) {
-          assert.isUndefined(result());
-        }
+    'should never return anything': function (result) {
+      for (var i = 0; i < N; i++) {
+        assert.isUndefined(result());
       }
     }
   }),
@@ -121,6 +119,66 @@ vows.describe('functions').addBatch({
       topic: functions.gt(42, 42),
       'should return false': function (result) {
         assert.isFalse(result);
+      }
+    }
+  }),
+  '`lt` function': testFunction(functions.lt, {
+    'with first argument less than second': {
+      topic: functions.lt(-42, 42),
+      'should return true': function (result) {
+        assert.isTrue(result);
+      }
+    },
+    'with first argument greater than second': {
+      topic: functions.lt(42, -42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
+    },
+    'with equal arguments': {
+      topic: functions.lt(42, 42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
+    }
+  }),
+  '`ge` function': testFunction(functions.ge, {
+    'with first argument greater than second': {
+      topic: functions.ge(42, -42),
+      'should return true': function (result) {
+        assert.isTrue(result);
+      }
+    },
+    'with first argument less than second': {
+      topic: functions.ge(42, 84),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
+    },
+    'with equal arguments': {
+      topic: functions.ge(42, 42),
+      'should return true': function (result) {
+        assert.isTrue(result);
+      }
+    }
+  }),
+  '`le` function': testFunction(functions.le, {
+    'with first argument less than second': {
+      topic: functions.le(-42, 42),
+      'should return true': function (result) {
+        assert.isTrue(result);
+      }
+    },
+    'with first argument greater than second': {
+      topic: functions.le(42, -42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
+    },
+    'with equal arguments': {
+      topic: functions.le(42, 42),
+      'should return true': function (result) {
+        assert.isTrue(result);
       }
     }
   })
