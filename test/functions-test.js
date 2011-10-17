@@ -126,6 +126,12 @@ vows.describe('functions').addBatch({
       'should return false': function (result) {
         assert.isFalse(result);
       }
+    },
+    'with different values': {
+      topic: functions.strictEq(-42, 42),
+      'should return false': function (result) {
+        assert.isFalse(result);
+      }
     }
   }),
   '`gt` function': testFunction(functions.gt, {
