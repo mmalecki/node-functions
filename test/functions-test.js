@@ -137,6 +137,34 @@ vows.describe('functions').addBatch({
         }
       }
     }
+  },
+  '`gt` function': {
+    topic: function () {
+      return functions.gt;
+    },
+    'should be a function': function (topic) {
+      assert.isFunction(topic);
+    },
+    'when called': {
+      'with first argument greater than second': {
+        topic: functions.gt(42, -42),
+        'should return true': function (result) {
+          assert.isTrue(result);
+        }
+      },
+      'with first argument less than second': {
+        topic: functions.gt(42, 84),
+        'should return false': function (result) {
+          assert.isFalse(result);
+        }
+      },
+      'with equal arguments': {
+        topic: functions.gt(42, 42),
+        'should return false': function (result) {
+          assert.isFalse(result);
+        }
+      }
+    }
   }
 }).export(module);
 
